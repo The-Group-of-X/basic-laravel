@@ -11,13 +11,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/team', function () {
+Route::get('/teesdfsdfseeeeam', function () {
     return view('team');
-});
+})->name('team');
 
 
-Route::get('/{username}', function ($username = null) {
-    return view('info', [
-        'u' => $username ?? 'No User Name Available'
-    ]);
-});
+// Route::get('/{username}', function ($username = null) {
+//     return view('info', [
+//         'u' => $username ?? 'No User Name Available'
+//     ]);
+// });
