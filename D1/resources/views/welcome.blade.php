@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-
 @section('title', 'Welcome')
-
 
 @section('content')
     <header class="bg-blue-600 text-white h-screen flex items-center justify-center">

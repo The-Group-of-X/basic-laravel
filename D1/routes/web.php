@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SanjibController;
 
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/sanjib', [SanjibController::class, 'index']);
 
 Route::get('/teesdfsdfseeeeam', function () {
     return view('team');
