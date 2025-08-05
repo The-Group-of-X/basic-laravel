@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RanjitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SanjibController;
@@ -38,4 +39,10 @@ Route::prefix('attendances')->name('attendances.')->controller(AttendanceControl
     Route::get('/{attendance}/todos', 'getTodos')->name('getTodos');
     Route::patch('/todos/{todo}/update-status', 'updateTodo')->name('todosupdateStatus');
     Route::delete('/{attendance}', 'destroy')->name('destroy');
+});
+
+
+
+Route::prefix('post')->name('post.')->controller(PostController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
 });
