@@ -57,4 +57,9 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    private function sum($a, $b)
+    {
+        return $a + $b;
+    }
 }
