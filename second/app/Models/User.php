@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -42,15 +43,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    // Code written in copy
-    public function getUserDetail()
-    {
-        return $this->hasOne(UserDetail::class, 'user_id', 'id')->with('getAddress');
-    }
-
-    public function getUserChildren()
-    {
-        return $this->hasMany(UserChild::class, 'user_id', 'id');
-    }
 }
