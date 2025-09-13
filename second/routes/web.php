@@ -31,6 +31,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->group(function () {
 
+
+    Route::post('/info', function () {
+        return response()->json(['message' => 'Info submitted successfully', 'status' => true]);
+    })->name('info.store');
+
+
     Route::get('/admin', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');

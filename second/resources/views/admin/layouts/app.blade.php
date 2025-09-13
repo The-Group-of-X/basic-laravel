@@ -1,49 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>
-        eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template
-    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title', 'Laravel Admin Dashboard')</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+
+    <meta name="keywords" content="@yield('keywords', 'default, keywords')">
+    <meta name="description" content="@yield('description', 'Default description')">
+
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @stack('styles')
 </head>
 
-<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
-$watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{ 'dark bg-gray-900': darkMode === true }">
-    <!-- ===== Preloader Start ===== -->
-    @include('admin.partials.preloader')
-    <!-- ===== Preloader End ===== -->
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        @include('admin.layouts.partials.sidebar')
 
-    <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen overflow-hidden">
-        <!-- ===== Sidebar Start ===== -->
-        @include('admin.partials.sidebar')
-        <!-- ===== Sidebar End ===== -->
-
-        <!-- ===== Content Area Start ===== -->
-        <div class="relative flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
-            <!-- Small Device Overlay Start -->
-            @include('admin.partials.mobile-overlay')
-            <!-- Small Device Overlay End -->
-
-            <!-- ===== Header Start ===== -->
-            @include('admin.partials.header')
-            <!-- ===== Header End ===== -->
-
-            <!-- ===== Main Content Start ===== -->
-            <main>
-                <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
-                    @yield('content')
-                </div>
-            </main>
-            <!-- ===== Main Content End ===== -->
-        </div>
-        <!-- ===== Content Area End ===== -->
+        <!-- Main Content -->
+        <main class="flex-1 p-6 bg-gray-100">
+            @yield('content')
+        </main>
     </div>
-    <!-- ===== Page Wrapper End ===== -->
+
+    <script>
+        // Dropdown functionality
+        document.querySelectorAll('button[aria-controls]').forEach(button => {
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                const dropdownContent = document.getElementById(button.getAttribute('aria-controls'));
+
+                button.setAttribute('aria-expanded', !isExpanded);
+                dropdownContent.classList.toggle('hidden');
+                button.querySelector('svg:last-child').classList.toggle('rotate-180');
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+    </script>
+
+    @stack('modal')
+    @stack('scripts')
 </body>
 
 </html>
