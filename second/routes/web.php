@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +33,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware('admin')->group(function () {
 
 
-    Route::post('/info', function () {
-        return response()->json(['message' => 'Info submitted successfully', 'status' => true]);
-    })->name('info.store');
+    Route::get('/info', [PostController::class, 'index'])->name('info.index');
+    Route::post('/info', [PostController::class, 'store'])->name('info.store');
 
 
     Route::get('/admin', function () {
