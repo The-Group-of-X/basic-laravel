@@ -1,25 +1,9 @@
  <aside class="w-64 bg-gray-900 text-white">
+
      <div class="p-4 border-b border-gray-800">
-         <div class="flex items-center justify-between">
+         <div class="flex items-center justify-start">
              <img src="https://tailwindflex.com/images/logo.svg" alt="Logo" class="h-8 w-auto">
              <span class="text-xl font-bold">Admin Pro</span>
-         </div>
-     </div>
-
-     <!-- Search Bar -->
-     <div class="p-4">
-         <div class="relative">
-             <input type="text"
-                 class="w-full bg-gray-800 text-white rounded-md pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                 placeholder="Search...">
-             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                 <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                     fill="currentColor">
-                     <path fill-rule="evenodd"
-                         d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                         clip-rule="evenodd" />
-                 </svg>
-             </div>
          </div>
      </div>
 
@@ -27,8 +11,8 @@
          <!-- Main Navigation -->
          <div class="space-y-4">
              <!-- Dashboard -->
-             <a href="#"
-                 class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg bg-gray-800 text-white group transition-all duration-200 hover:bg-gray-700">
+             <a href="{{ route('admin.dashboard.index') }}"
+                 class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg {{ Route::currentRouteName() == 'admin.dashboard.index' ? 'bg-gray-800' : '' }} text-white group transition-all duration-200 hover:bg-gray-700">
                  <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -73,67 +57,9 @@
                  </div>
              </div>
 
-             <!-- Team Dropdown -->
-             <div class="space-y-1">
-                 <button
-                     class="w-full flex items-center justify-between px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none"
-                     aria-expanded="false" aria-controls="team-dropdown">
-                     <div class="flex items-center">
-                         <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                             stroke="currentColor">
-                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                         </svg>
-                         Team
-                     </div>
-                     <svg class="ml-2 h-5 w-5 transform transition-transform duration-200"
-                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                         <path fill-rule="evenodd"
-                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                             clip-rule="evenodd" />
-                     </svg>
-                 </button>
-                 <div class="hidden space-y-1 pl-11" id="team-dropdown">
-                     <a href="#"
-                         class="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
-                         Members
-                     </a>
-                     <a href="#"
-                         class="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
-                         Calendar
-                     </a>
-                     <a href="#"
-                         class="group flex items-center px-4 py-2 text-sm text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">
-                         Settings
-                     </a>
-                 </div>
-             </div>
-
-             <!-- Projects -->
-             <a href="#"
-                 class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200">
-                 <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                         d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                 </svg>
-                 Projects
-             </a>
-
-             <!-- Calendar -->
-             <a href="#"
-                 class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200">
-                 <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                     stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                 </svg>
-                 Calendar
-             </a>
-
              <!-- Documents -->
-             <a href="#"
-                 class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 hover:bg-gray-700 hover:text-white group transition-all duration-200">
+             <a href="{{ route('admin.documents.index') }}"
+                 class="flex items-center px-4 py-2.5 text-sm font-medium rounded-lg text-gray-300 {{ Route::currentRouteName() == 'admin.documents.index' ? 'bg-gray-800' : '' }} hover:bg-gray-700 hover:text-white group transition-all duration-200">
                  <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('seo_records', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('email');
-            $table->text('phone');
-            $table->boolean('is_active')->default(true);
+            $table->string('page_name')->unique();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keywords')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('seo_records');
     }
 };

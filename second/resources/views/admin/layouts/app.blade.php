@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Laravel Admin Dashboard')</title>
+    <title>{{ $pageseo ? $pageseo->meta_title : 'Laravel Admin Dashboard' }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
 
-    <meta name="keywords" content="@yield('keywords', 'default, keywords')">
-    <meta name="description" content="@yield('description', 'Default description')">
+    <meta name="title" content="{{ $pageseo ? $pageseo->meta_title : 'default, keywords' }}">
+    <meta name="keywords" content="{{ $pageseo ? $pageseo->meta_keywords : 'default, keywords' }}">
+    <meta name="description" content="{{ $pageseo ? $pageseo->meta_description : 'Default description' }}">
 
 
     <!-- Scripts -->

@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,14 +32,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('admin')->group(function () {
 
-
-    Route::get('/info', [PostController::class, 'index'])->name('info.index');
-    Route::post('/info', [PostController::class, 'store'])->name('info.store');
-
+    Route::get('/admin/documents', [Admin\DocumentController::class, 'index'])->name('admin.documents.index');
+    Route::get('/admin/post', [Admin\PostController::class, 'index'])->name('admin.post.index');
 
     Route::get('/admin', function () {
         return view('admin.dashboard');
-    })->name('admin.dashboard');
+    })->name('admin.dashboard.index');
 });
 
 
